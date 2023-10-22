@@ -30,7 +30,7 @@ public class Administrador extends usuario {
     }
 
     public Administrador(String inventario, String nombre, String apellido, String username, String password) {
-        super(nombre, apellido, username, password);
+        super(nombre, apellido);
         this.inventario = inventario;
     }
 

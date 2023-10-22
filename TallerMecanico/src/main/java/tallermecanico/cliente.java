@@ -16,7 +16,7 @@ public class cliente extends usuario {
     private String direccion;
 
     public cliente(String nombre, String apellido, String username, String password, String telefono, String direccion) {
-        super(nombre, apellido, username, password);
+        super(nombre, apellido);
         this.telefono = telefono;
         this.direccion = direccion;
     }
