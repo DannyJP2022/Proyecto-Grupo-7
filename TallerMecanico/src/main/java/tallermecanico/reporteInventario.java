@@ -8,6 +8,22 @@ package tallermecanico;
  *
  * @author Danny Jimenez
  */
-public class reporteInventario {
-    
+class ReporteInventario extends Reporte {
+    private int cantidadProductos;
+
+    public ReporteInventario(String titulo, int cantidadProductos) {
+        super(titulo);
+        this.cantidadProductos = cantidadProductos;
+    }
+
+    @Override
+    public void generarReporte() {
+        System.out.println("Reporte de Inventario: " + getTitulo());
+        System.out.println("Cantidad de Productos: " + cantidadProductos);
+    }
+
+    // Getter para el título
+    public String getTitulo() {
+        return titulo; // No es necesario usar "super" aquí
+    }
 }

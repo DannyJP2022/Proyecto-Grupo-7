@@ -8,6 +8,20 @@ package tallermecanico;
  *
  * @author Danny Jimenez
  */
-public class reporte {
-    
+abstract class Reporte {
+    String titulo;
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public Reporte(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public abstract void generarReporte();
 }
