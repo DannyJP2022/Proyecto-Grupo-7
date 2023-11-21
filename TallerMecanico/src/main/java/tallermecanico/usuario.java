@@ -12,16 +12,20 @@ public class usuario {
     private String apellido;
     private String username;
     private String password;
+    private String tipo;
 
-
-    
-      public usuario(int id, String nombre, String apellido, String username, String password) {
+    public usuario(int id, String nombre, String apellido, String username, String password, String tipo) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.username = username;
         this.password = password;
+        this.tipo = tipo;
     }
+
+
+    
+    
 
     public boolean autenticar(String username, String password) {
         return this.username.equals(username) && this.password.equals(password);
@@ -59,6 +63,24 @@ public class usuario {
         this.password = password;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    
+    
     public static List<usuario> getUsuarios() {
         return usuarios;
     }

@@ -1,18 +1,22 @@
 
 package tallermecanico;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class PaginaPrincipal extends javax.swing.JFrame {
 
     jModuloInicioSesion moduloInicioSesion = new jModuloInicioSesion();
-    
+     boolean sesionActiva;
     
     public PaginaPrincipal() {
         initComponents();
+        sesionActiva=false;
         jMenuLogOut.setEnabled(false);
         jMenuModulos.setEnabled(false);
         this.add(moduloInicioSesion);
-        
+       
     }
 
     /**
@@ -78,11 +82,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuLogInActionPerformed
-       
+        moduloInicioSesion.limpiarCampos();
+        moduloInicioSesion.setJMenuLogIn(jMenuLogIn);
+        moduloInicioSesion.setJMenuLogOut(jMenuLogOut);
         moduloInicioSesion.show();
-        
-        jMenuLogOut.setEnabled(true);
-        jMenuLogIn.setEnabled(false);
+
     }//GEN-LAST:event_jMenuLogInActionPerformed
 
     private void jMenuArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuArchivoActionPerformed

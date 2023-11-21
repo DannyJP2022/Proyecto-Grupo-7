@@ -9,16 +9,27 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JMenuItem;
 //no lo necesito por ahora y por eso lo coamento --->> import javax.swing.table.DefaultTableModel;
 
 
 public class jModuloInicioSesion extends javax.swing.JInternalFrame {
 
      BaseDeDatos conexion = new BaseDeDatos();
-       
-  
+     
+     
+     /*Empieza aqui la manera de activar y desactivar las opciones del menu principal desde esta clase*/
+    private JMenuItem jMenuLogIn;
+    private JMenuItem jMenuLogOut;
+    public void setJMenuLogIn(JMenuItem jMenuLogIn) { this.jMenuLogIn = jMenuLogIn; }
+    public void setJMenuLogOut(JMenuItem jMenuLogOut) { this.jMenuLogOut = jMenuLogOut;  }
+    /*//////////////////////////////// termina aqui //////////////////////////////////////////////////*/
+    
+    
+    
     public jModuloInicioSesion() {
         initComponents();
+        limpiarCampos();
     }
 
     /**
@@ -115,19 +126,23 @@ public class jModuloInicioSesion extends javax.swing.JInternalFrame {
         try {
             if (validarCredenciales(usuario, contraseña)) {
                 JOptionPane.showMessageDialog(null, "Credenciales válidas. Acceso permitido.");
-                
-                // tengo que agregar funcionalidades
-            } else {
-                JOptionPane.showMessageDialog(null, "Credenciales inválidas. Acceso denegado.");
+                if (jMenuLogIn != null) {
+                    jMenuLogIn.setEnabled(false);
+                    jMenuLogOut.setEnabled(true);                   
+                }
+                dispose();
+            } else {             
+                JOptionPane.showMessageDialog(null, "Credenciales inválidas. Acceso denegado.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(jModuloInicioSesion.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }//GEN-LAST:event_jButtonIngresarActionPerformed
 
  
     
-   private boolean validarCredenciales(String usuario, String contraseña) throws ClassNotFoundException {
+   public boolean validarCredenciales(String usuario, String contraseña) throws ClassNotFoundException {
     String query = "SELECT * FROM proyecto.logininfo";
 
     try {
@@ -138,9 +153,9 @@ public class jModuloInicioSesion extends javax.swing.JInternalFrame {
             String user = resultSet.getString("username");
             String password = resultSet.getString("password");
 
-            // Verifica si el usuario y la contraseña coinciden
+         
             if (user.equals(usuario) && password.equals(contraseña)) {
-                return true; // Credenciales válidas
+                return true; 
             }
         }
     } catch (SQLException e) {
@@ -149,9 +164,11 @@ public class jModuloInicioSesion extends javax.swing.JInternalFrame {
 
     return false; // Credenciales no encontradas o error en la base de datos
 }
-    
-    
-    
+
+     public void limpiarCampos() {
+        jTextUser.setText("");
+        jTextPassword.setText("");
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonIngresar;

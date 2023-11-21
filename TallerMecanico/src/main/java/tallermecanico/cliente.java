@@ -9,11 +9,13 @@ public class cliente extends usuario {
     private String telefono;
     private String direccion;
 
-    public cliente(String telefono, String direccion, int id, String nombre, String apellido, String username, String password) {
-        super(id, nombre, apellido, username, password);
+    public cliente(String telefono, String direccion, int id, String nombre, String apellido, String username, String password, String tipo) {
+        super(id, nombre, apellido, username, password, tipo);
         this.telefono = telefono;
         this.direccion = direccion;
     }
+
+   
   
     public void realizarCompra(producto producto, int cantidad) {
 
