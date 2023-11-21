@@ -1,26 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package tallermecanico;
 
 import java.util.List;
 
-/**
- *
- * @author Danny Jimenez
- */
+
 public class cliente extends usuario {
 
     private String telefono;
     private String direccion;
 
-    public cliente(String nombre, String apellido, String username, String password, String telefono, String direccion) {
-        super(nombre, apellido);
+    public cliente(String telefono, String direccion, int id, String nombre, String apellido, String username, String password) {
+        super(id, nombre, apellido, username, password);
         this.telefono = telefono;
         this.direccion = direccion;
     }
-
+  
     public void realizarCompra(producto producto, int cantidad) {
 
     }

@@ -1,24 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package tallermecanico;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Danny Jimenez
- */
+
 public class usuario {
 
+     private int id;
     private String nombre;
     private String apellido;
     private String username;
     private String password;
 
-    public usuario(String nombre, String apellido) {
+
+    
+      public usuario(int id, String nombre, String apellido, String username, String password) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.username = username;
