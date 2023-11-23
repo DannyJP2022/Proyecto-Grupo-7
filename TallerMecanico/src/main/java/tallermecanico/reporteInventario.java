@@ -9,7 +9,7 @@ package tallermecanico;
  * @author Danny Jimenez
  */
 class ReporteInventario extends Reporte {
-    private int cantidadProductos;
+    private final int cantidadProductos;
 
     public ReporteInventario(String titulo, int cantidadProductos) {
         super(titulo);
@@ -23,6 +23,7 @@ class ReporteInventario extends Reporte {
     }
 
     // Getter para el título
+    @Override
     public String getTitulo() {
         return titulo; // No es necesario usar "super" aquí
     }

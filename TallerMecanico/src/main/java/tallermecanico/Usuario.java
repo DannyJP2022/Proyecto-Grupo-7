@@ -11,14 +11,14 @@ import java.util.List;
  *
  * @author Danny Jimenez
  */
-public class usuario {
+public class Usuario {
 
     private String nombre;
     private String apellido;
     private String username;
     private String password;
 
-    public usuario(String nombre, String apellido) {
+    public Usuario(String nombre, String apellido, String username, String password) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.username = username;
@@ -61,19 +61,21 @@ public class usuario {
         this.password = password;
     }
 
-    public static List<usuario> getUsuarios() {
+    public static List<Usuario> getUsuarios() {
         return usuarios;
     }
 
-    public static void setUsuarios(List<usuario> usuarios) {
-        usuario.usuarios = usuarios;
+    public static void setUsuarios(List<Usuario> usuarios) {
+        Usuario.usuarios = usuarios;
     }
 
-    public static List<usuario> usuarios = new ArrayList();
+    public static List<Usuario> usuarios = new ArrayList();
 
     @Override
     public String toString() {
-        return this.nombre + " " + this.apellido;
+        return "Usuario{" + "nombre=" + nombre + ", apellido=" + apellido + ", username=" + username + ", password=" + password + '}';
     }
+
+    
 
 }

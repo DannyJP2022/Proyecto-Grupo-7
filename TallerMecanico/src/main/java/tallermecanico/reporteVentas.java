@@ -8,10 +8,10 @@ package tallermecanico;
  *
  * @author Danny Jimenez
  */
-class ReporteVentas extends Reporte {
+class reporteVentas extends Reporte {
     private final venta[] ventas;
 
-    public ReporteVentas(String titulo, venta[] ventas) {
+    public reporteVentas(String titulo, venta[] ventas) {
         super(titulo);
         this.ventas = ventas;
     }
