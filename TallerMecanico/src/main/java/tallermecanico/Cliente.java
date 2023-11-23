@@ -4,8 +4,6 @@
  */
 package tallermecanico;
 
-import java.util.List;
-
 /**
  *
  * @author Danny Jimenez
@@ -15,12 +13,14 @@ public class Cliente extends Usuario {
     private String direccion;
     private TipoUsuario tipo;
 
-    public Cliente(String nombre, String apellido, String username, String password, String telefono, String direccion) {
+    public Cliente(String telefono, String direccion, TipoUsuario tipo, String nombre, String apellido, String username, String password) {
         super(nombre, apellido, username, password);
         this.telefono = telefono;
         this.direccion = direccion;
-        this.tipo = TipoUsuario.CLIENTE; // Se indica el tipo de usuario como cliente
+        this.tipo = tipo;
     }
+
+    
 
     // Resto del código igual...
 
@@ -39,9 +39,7 @@ public class Cliente extends Usuario {
     @Override
     public boolean autenticar(String username, String password) {
         // Lógica de autenticación mejorada considerando el tipo de usuario
-        if (this.getUsername().equals(username) && this.getPassword().equals(password) && this.tipo == TipoUsuario.CLIENTE) {
-            return true;
-        }
-        return false;
+        
+        return this.getUsername().equals(username) && this.getPassword().equals(password) && this.tipo == TipoUsuario.CLIENTE;
     }
 }
