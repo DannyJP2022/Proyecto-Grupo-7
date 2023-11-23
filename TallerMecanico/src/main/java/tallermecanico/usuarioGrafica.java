@@ -1,20 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package tallermecanico;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Danny Jimenez
- */
+
 public class usuarioGrafica extends javax.swing.JFrame {
 
-    /**
-     * Creates new form usuarioGrafica
-     */
+    
     public usuarioGrafica() {
         initComponents();
     }
@@ -156,7 +148,14 @@ public class usuarioGrafica extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+<<<<<<< HEAD
         new menu().setVisible(true);
+=======
+       String nombre = jTextField1.getText();
+       String apellido = jTextField2.getText();
+    //esta dando error por eso lo comento ----->     usuario.usuarios.add(new usuario (nombre, apellido));
+        JOptionPane.showMessageDialog(null, usuario.usuarios);
+>>>>>>> 10c01c4b23c6e557abca58212ce15420abdcee82
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

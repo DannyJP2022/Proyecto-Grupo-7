@@ -1,17 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package tallermecanico;
 
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 /**
  *
  * @author Danny Jimenez
  */
 public class Administrador extends Usuario {
+=======
+
+public class Administrador extends usuario {
+    private String inventario;
+>>>>>>> 10c01c4b23c6e557abca58212ce15420abdcee82
 
     private String inventario;
     private TipoUsuario tipo;
@@ -92,6 +95,7 @@ public class Administrador extends Usuario {
         Usuario.usuarios = usuarios;
     }
 
+<<<<<<< HEAD
     public static List<Administrador> administrador = new ArrayList();
 
     public static List<Administrador> getAdministrador() {
@@ -100,5 +104,18 @@ public class Administrador extends Usuario {
 
     public static void setAdministrador(List<Administrador> administrador) {
         Administrador.administrador = administrador;
+=======
+    public Administrador(String inventario, int id, String nombre, String apellido, String username, String password, String tipo) {
+        super(id, nombre, apellido, username, password, tipo);
+        this.inventario = inventario;
+    }
+
+   
+   
+
+    public void agregarProducto(producto producto, int cantidad) {
+        // Verificar si el producto ya existe en el inventario
+    
+>>>>>>> 10c01c4b23c6e557abca58212ce15420abdcee82
     }
 }
