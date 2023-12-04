@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package tallermecanico;
+package com.mycompany.backupproyecto3dic1859;
 
 import java.awt.TextArea;
 import javax.swing.JOptionPane;

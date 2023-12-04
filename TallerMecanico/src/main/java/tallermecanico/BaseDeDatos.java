@@ -16,4 +16,5 @@ public class BaseDeDatos {
         //conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/proyecto","root","24457285");  /*Conecxion con suscomputadoras*/
         return conexion;
     }
+     //comentario de prueba
 }

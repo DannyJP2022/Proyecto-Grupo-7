@@ -4,7 +4,7 @@ package tallermecanico;
 import java.util.List;
 
 
-public class Administrador extends usuario {
+public class Administrador extends Usuario {
     private String inventario;
 
     public String getInventario() {
@@ -15,12 +15,12 @@ public class Administrador extends usuario {
         this.inventario = inventario;
     }
 
-    public static List<usuario> getUsuarios() {
+    public static List<Usuario> getUsuarios() {
         return usuarios;
     }
 
-    public static void setUsuarios(List<usuario> usuarios) {
-        usuario.usuarios = usuarios;
+    public static void setUsuarios(List<Usuario> usuarios) {
+        Usuario.usuarios = usuarios;
     }
 
     public Administrador(String inventario, int id, String nombre, String apellido, String username, String password, String tipo) {

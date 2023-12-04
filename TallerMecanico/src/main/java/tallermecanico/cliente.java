@@ -4,7 +4,7 @@ package tallermecanico;
 import java.util.List;
 
 
-public class cliente extends usuario {
+public class cliente extends Usuario {
 
     private String telefono;
     private String direccion;
@@ -43,11 +43,11 @@ public class cliente extends usuario {
         this.direccion = direccion;
     }
 
-    public static List<usuario> getUsuarios() {
+    public static List<Usuario> getUsuarios() {
         return usuarios;
     }
 
-    public static void setUsuarios(List<usuario> usuarios) {
-        usuario.usuarios = usuarios;
+    public static void setUsuarios(List<Usuario> usuarios) {
+        Usuario.usuarios = usuarios;
     }
 }
