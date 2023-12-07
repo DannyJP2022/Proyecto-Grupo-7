@@ -1,33 +1,18 @@
-
 package tallermecanico;
 
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD:TallerMecanico/src/main/java/tallermecanico/Usuario.java
-/**
- *
- * @author Danny Jimenez
- */
 public class Usuario {
-=======
-
-public class usuario {
->>>>>>> 10c01c4b23c6e557abca58212ce15420abdcee82:TallerMecanico/src/main/java/tallermecanico/usuario.java
-
-     private int id;
+    private int id;
     private String nombre;
     private String apellido;
     private String username;
     private String password;
     private String tipo;
 
-<<<<<<< HEAD:TallerMecanico/src/main/java/tallermecanico/Usuario.java
-    public Usuario(String nombre, String apellido, String username, String password) {
-=======
-    public usuario(int id, String nombre, String apellido, String username, String password, String tipo) {
+    public Usuario(int id, String nombre, String apellido, String username, String password, String tipo) {
         this.id = id;
->>>>>>> 10c01c4b23c6e557abca58212ce15420abdcee82:TallerMecanico/src/main/java/tallermecanico/usuario.java
         this.nombre = nombre;
         this.apellido = apellido;
         this.username = username;
@@ -35,9 +20,8 @@ public class usuario {
         this.tipo = tipo;
     }
 
-
-    
-    
+    public Usuario() {
+    }
 
     public boolean autenticar(String username, String password) {
         return this.username.equals(username) && this.password.equals(password);
@@ -75,9 +59,10 @@ public class usuario {
         this.password = password;
     }
 
-<<<<<<< HEAD:TallerMecanico/src/main/java/tallermecanico/Usuario.java
     public static List<Usuario> getUsuarios() {
-=======
+        return usuarios;
+    }
+
     public int getId() {
         return id;
     }
@@ -94,13 +79,6 @@ public class usuario {
         this.tipo = tipo;
     }
 
-    
-    
-    public static List<usuario> getUsuarios() {
->>>>>>> 10c01c4b23c6e557abca58212ce15420abdcee82:TallerMecanico/src/main/java/tallermecanico/usuario.java
-        return usuarios;
-    }
-
     public static void setUsuarios(List<Usuario> usuarios) {
         Usuario.usuarios = usuarios;
     }
@@ -109,9 +87,7 @@ public class usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "nombre=" + nombre + ", apellido=" + apellido + ", username=" + username + ", password=" + password + '}';
+        return "" + "nombre:" + nombre + "\n Apellido:" + apellido + "\n Username:" + username + "\n Password:" + password + ' ';
     }
-
-    
 
 }

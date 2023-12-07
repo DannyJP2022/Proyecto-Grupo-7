@@ -1,6 +1,8 @@
 
 package tallermecanico;
 
+import tallermecanico.Graficas.PaginaPrincipal;
+
 
 public class TallerMecanico {
     

@@ -9,6 +9,5 @@ package tallermecanico;
  * @author Danny Jimenez
  */
 public enum TipoUsuario {
-    CLIENTE,
-    ADMINISTRADOR
+    CLIENTE,ADMINISTRADOR
 }
