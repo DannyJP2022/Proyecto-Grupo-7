@@ -31,12 +31,12 @@ public class AdministrarUsuarios extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         txtId = new javax.swing.JTextField();
         txtUsername = new javax.swing.JTextField();
-        btnInsertar = new javax.swing.JToggleButton();
+        btnInsertarBorrar = new javax.swing.JToggleButton();
         txtNombre = new javax.swing.JTextField();
         btnEliminar = new javax.swing.JToggleButton();
         txtPassword = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
-        btnActualizar = new javax.swing.JToggleButton();
+        btnActualizarBorrar = new javax.swing.JToggleButton();
         cmbTipo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -52,10 +52,10 @@ public class AdministrarUsuarios extends javax.swing.JInternalFrame {
 
         txtId.setEditable(false);
 
-        btnInsertar.setText("Insertar");
-        btnInsertar.addActionListener(new java.awt.event.ActionListener() {
+        btnInsertarBorrar.setText("Insertar");
+        btnInsertarBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInsertarActionPerformed(evt);
+                btnInsertarBorrarActionPerformed(evt);
             }
         });
 
@@ -66,14 +66,14 @@ public class AdministrarUsuarios extends javax.swing.JInternalFrame {
             }
         });
 
-        btnActualizar.setText("Actualizar");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizarBorrar.setText("Actualizar");
+        btnActualizarBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
+                btnActualizarBorrarActionPerformed(evt);
             }
         });
 
-        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "Administrador", "Cliente", "Empleado", "Visitante" }));
+        cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "Admin", "Cliente", "Empleado", "Visita" }));
 
         jLabel1.setText("Nombre");
 
@@ -122,9 +122,9 @@ public class AdministrarUsuarios extends javax.swing.JInternalFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnInsertarBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
-                                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnActualizarBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(90, 90, 90)
@@ -161,9 +161,9 @@ public class AdministrarUsuarios extends javax.swing.JInternalFrame {
                     .addComponent(jLabel6))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(btnInsertarBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnActualizarBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -204,32 +204,37 @@ public class AdministrarUsuarios extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
+    private void btnInsertarBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarBorrarActionPerformed
         // TODO add your handling code here:
 
         if(txtId.getText().isEmpty()||txtNombre.getText().isEmpty()||txtApellido.getText().isEmpty()||
             txtUsername.getText().isEmpty()||txtPassword.getText().isEmpty()||cmbTipo.getSelectedIndex()==0){
 
-            JOptionPane.showMessageDialog(null, "error");
+            JOptionPane.showMessageDialog(null, "Error faltan datos por agregar");
         }else{
-            int idEstudiante = Integer.parseInt(txtId.getText().trim());
+            int id = Integer.parseInt(txtId.getText().trim());
             String primerNombre = txtNombre.getText().trim();
             String apellido = txtApellido.getText().trim();
-            String email = txtUsername.getText().trim();
-            String genero =cmbTipo.getSelectedItem().toString().trim() ;
-            String direccionIP = txtPassword.getText().trim();
+            String username = txtUsername.getText().trim();            
+            String password = txtPassword.getText().trim();
+            String tipo =cmbTipo.getSelectedItem().toString().trim() ;
 
             try{
                 Statement statement  = conexion.conexionUsuarioDB().createStatement();
-                String query = "INSERT INTO estudiante (idEstudiante,primerNombre,apellido,email,genero,direccionIP)"
-                +"VALUES("+idEstudiante+",'"+primerNombre+"','"+apellido+"','"+email+"','"+genero+"','"+direccionIP+"')";
+//                String query = "INSERT INTO estudiante (idEstudiante,primerNombre,apellido,email,genero,direccionIP)"
+//                +"VALUES("+idEstudiante+",'"+primerNombre+"','"+apellido+"','"+email+"','"+genero+"','"+direccionIP+"')";
 
+                 String query ="INSERT INTO LogInInfo (id, nombre, apellido, username, password, tipo)"
+                         +  "VALUES("+id+",'"+primerNombre+"','"+apellido+"','"+username+"','"+password+"','"+tipo+"')";
+ 
+                
+                     
                 statement.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "Registro insertado con exito");
                 cargarTabla();
@@ -242,7 +247,7 @@ public class AdministrarUsuarios extends javax.swing.JInternalFrame {
 
         }
 
-    }//GEN-LAST:event_btnInsertarActionPerformed
+    }//GEN-LAST:event_btnInsertarBorrarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
@@ -254,11 +259,11 @@ public class AdministrarUsuarios extends javax.swing.JInternalFrame {
             int columna = 0;
             int fila = jTableUsuarios.getSelectedRow();
             String valor = jTableUsuarios.getModel().getValueAt(fila,columna).toString();
-            int idEstudiante = Integer.parseInt(valor);
+            int id = Integer.parseInt(valor);
 
             try{
                 Statement statement  = conexion.conexionUsuarioDB().createStatement();
-                String query = "DELETE FROM estudiante where idEstudiante="+idEstudiante;
+                String query = "DELETE FROM LogInInfo WHERE id="+id;
 
                 statement.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "Registro eliminado con exito");
@@ -292,18 +297,18 @@ public class AdministrarUsuarios extends javax.swing.JInternalFrame {
 
         if (tipo.equals("admin")) {
             cmbTipo.setSelectedIndex(1);
-        } else if (tipo.equals("client")) {
+        } else if (tipo.equals("cliente")) {
             cmbTipo.setSelectedIndex(2);
-        } else if (tipo.equals("employee")) {
+        } else if (tipo.equals("empleado")) {
             cmbTipo.setSelectedIndex(3);
-        } else if(tipo.equals("visitor")){
+        } else if(tipo.equals("visita")){
             cmbTipo.setSelectedIndex(4);
         }                   
     }//GEN-LAST:event_jTableUsuariosMouseClicked
 
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+    private void btnActualizarBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarBorrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnActualizarActionPerformed
+    }//GEN-LAST:event_btnActualizarBorrarActionPerformed
 
     
     /*
@@ -352,9 +357,9 @@ Visitante
       //comentario de prueba 2
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnActualizar;
+    private javax.swing.JToggleButton btnActualizarBorrar;
     private javax.swing.JToggleButton btnEliminar;
-    private javax.swing.JToggleButton btnInsertar;
+    private javax.swing.JToggleButton btnInsertarBorrar;
     private javax.swing.JComboBox<String> cmbTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
