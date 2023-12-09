@@ -20,6 +20,14 @@ public class Usuario {
         this.tipo = tipo;
     }
 
+    public Usuario(String nombre, String apellido, String username, String password, String tipo) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.username = username;
+        this.password = password;
+        this.tipo = tipo;
+    }
+
     public Usuario() {
     }
 

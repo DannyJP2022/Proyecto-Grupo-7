@@ -1,6 +1,8 @@
 
 package tallermecanico;
 
+import tallermecanico.Reportes.venta;
+import tallermecanico.Reportes.ReporteInventario;
 import tallermecanico.Graficas.PaginaPrincipal;
 
 
