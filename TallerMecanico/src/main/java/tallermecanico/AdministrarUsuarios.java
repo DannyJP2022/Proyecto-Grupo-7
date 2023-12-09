@@ -224,9 +224,7 @@ public class AdministrarUsuarios extends javax.swing.JInternalFrame {
             String tipo =cmbTipo.getSelectedItem().toString().trim() ;
 
             try{
-                Statement statement  = conexion.conexionUsuarioDB().createStatement();
-//                String query = "INSERT INTO estudiante (idEstudiante,primerNombre,apellido,email,genero,direccionIP)"
-//                +"VALUES("+idEstudiante+",'"+primerNombre+"','"+apellido+"','"+email+"','"+genero+"','"+direccionIP+"')";
+                Statement statement  = conexion.conexionUsuarioDB().createStatement();                
 
                  String query ="INSERT INTO LogInInfo (id, nombre, apellido, username, password, tipo)"
                          +  "VALUES("+id+",'"+primerNombre+"','"+apellido+"','"+username+"','"+password+"','"+tipo+"')";
@@ -322,14 +320,6 @@ public class AdministrarUsuarios extends javax.swing.JInternalFrame {
                 
               try{
                     Statement statement  = conexion.conexionUsuarioDB().createStatement();
-//                    String query = "UPDATE Proyecto.LogInInfo" +
-//                                    "SET " +
-//                                    "nombre = '"+primerNombre+"',"+
-//                                    "apellido = '"+apellido+"',"+
-//                                    "username = '"+username+"',"+
-//                                    "password = '"+password+"',"+
-//                                    "tipo ='"+tipo+"'"+
-//                                    " WHERE id ="+id;
                    
                     String query = "UPDATE Proyecto.LogInInfo " +
                                    "SET " +
