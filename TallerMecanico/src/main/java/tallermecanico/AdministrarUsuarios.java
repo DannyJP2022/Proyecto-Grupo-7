@@ -50,8 +50,6 @@ public class AdministrarUsuarios extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Modificar usuarios por Administrador");
 
-        txtId.setEditable(false);
-
         btnInsertarBorrar.setText("Insertar");
         btnInsertarBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,28 +293,68 @@ public class AdministrarUsuarios extends javax.swing.JInternalFrame {
         txtUsername.setText(username);
         txtPassword.setText(password);
 
-        if (tipo.equals("admin")) {
+        if (tipo.equals("Admin")) {
             cmbTipo.setSelectedIndex(1);
-        } else if (tipo.equals("cliente")) {
+        } else if (tipo.equals("Cliente")) {
             cmbTipo.setSelectedIndex(2);
-        } else if (tipo.equals("empleado")) {
+        } else if (tipo.equals("Empleado")) {
             cmbTipo.setSelectedIndex(3);
-        } else if(tipo.equals("visita")){
+        } else if(tipo.equals("Visita")){
             cmbTipo.setSelectedIndex(4);
         }                   
     }//GEN-LAST:event_jTableUsuariosMouseClicked
 
     private void btnActualizarBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarBorrarActionPerformed
-        // TODO add your handling code here:
+               
+         if(txtId.getText().isEmpty()||txtNombre.getText().isEmpty()||txtApellido.getText().isEmpty()||
+           txtUsername.getText().isEmpty()||txtPassword.getText().isEmpty()||cmbTipo.getSelectedIndex()==0){
+      
+            JOptionPane.showMessageDialog(null, "error");
+        }else{
+                                  
+                
+                int id = Integer.parseInt(txtId.getText().trim());
+                String primerNombre = txtNombre.getText().trim();
+                String apellido = txtApellido.getText().trim();
+                String username = txtUsername.getText().trim();            
+                String password = txtPassword.getText().trim();
+                String tipo =cmbTipo.getSelectedItem().toString().trim() ;
+                
+              try{
+                    Statement statement  = conexion.conexionUsuarioDB().createStatement();
+//                    String query = "UPDATE Proyecto.LogInInfo" +
+//                                    "SET " +
+//                                    "nombre = '"+primerNombre+"',"+
+//                                    "apellido = '"+apellido+"',"+
+//                                    "username = '"+username+"',"+
+//                                    "password = '"+password+"',"+
+//                                    "tipo ='"+tipo+"'"+
+//                                    " WHERE id ="+id;
+                   
+                    String query = "UPDATE Proyecto.LogInInfo " +
+                                   "SET " +
+                                   "nombre = '"+primerNombre+"', " +
+                                   "apellido = '"+apellido+"', " +
+                                   "username = '"+username+"', " +
+                                   "password = '"+password+"', " +
+                                   "tipo = '"+tipo+"' " +
+                                   "WHERE id = "+id;
+                    
+                    statement.executeUpdate(query);
+                    JOptionPane.showMessageDialog(null, "Registro actualizado con exito");
+                    cargarTabla();
+                    statement.close();                                                    
+                                   
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+                
+        }   
+               
+                    
+        }
+        
     }//GEN-LAST:event_btnActualizarBorrarActionPerformed
-
-    
-    /*
-    Administrador
-Cliente
-Empleado
-Visitante
-    */
+      
     
     private void cargarTabla() {
         String query = "SELECT * FROM proyecto.logininfo";
@@ -354,7 +392,7 @@ Visitante
         }
     }
 
-      //comentario de prueba 2
+     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnActualizarBorrar;
