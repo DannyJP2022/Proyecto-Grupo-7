@@ -22,7 +22,7 @@ public class TallerMecanico {
 
 //esta dando error por eso lo comento -----> reporteVentas.generarReporte();
         System.out.println();
-        reporteInventario.generarReporte();
+        
     }
     }
 
