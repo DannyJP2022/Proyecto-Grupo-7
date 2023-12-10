@@ -4,33 +4,45 @@
  */
 package tallermecanico;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Danny Jimenez
  */
-public class producto {
+public class Producto {
 
     private String nombre;
     private double precio;
     private int cantidad;
 
-    public producto(String nombre, double precio, int cantidad) {
+    public Producto(String nombre, double precio, int cantidad) {
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
     }
 
-    // Getters y Setters
-    // Otros métodos relacionados con productos
     public void actualizarPrecio(double nuevoPrecio) {
-        this.precio = nuevoPrecio;
+        if (nuevoPrecio >= 0) {
+            this.precio = nuevoPrecio;
+        } else {
+            JOptionPane.showMessageDialog(null, "El precio no puede ser negativo");
+        }
     }
 
     public void restarInventario(int cantidad) {
-        if (this.cantidad >= cantidad) {
+        if (this.cantidad >= cantidad && cantidad > 0) {
             this.cantidad -= cantidad;
         } else {
-            // Manejo de error, inventario insuficiente
+            JOptionPane.showMessageDialog(null, "Inventario insuficiente");
+        }
+    }
+
+    public void aumentarInventario(int cantidad) {
+        if (cantidad > 0) {
+            this.cantidad += cantidad;
+        } else {
+            JOptionPane.showMessageDialog(null, "Cantidad no válida para aumentar el inventario");
         }
     }
 

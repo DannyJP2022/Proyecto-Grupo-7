@@ -1,16 +1,7 @@
-/TallerMecanico/target/
-
-
-
-
-
-
-/*ultima version de la base de datos 
-
 create database Proyecto;
 use Proyecto;
 create table LogInInfo (
-	id INT,
+	id INT primary key auto_increment,
 	nombre VARCHAR(50),
 	apellido VARCHAR(50),
 	username VARCHAR(50),
@@ -23,5 +14,12 @@ insert into LogInInfo (id, nombre, apellido, username, password, tipo) values (3
 insert into LogInInfo (id, nombre, apellido, username, password, tipo) values (4, 'Vanya', 'Matterson', 'vmatterson3', 'hL5)8.*H', 'visitor');
 
 select * from proyecto.logininfo;
+drop table logininfo;
 
-*/
+create table LogInInfo (
+	id INT primary key auto_increment,
+	nombre VARCHAR(50),
+	apellido VARCHAR(50),
+	username VARCHAR(50),
+	password VARCHAR(50)
+);
