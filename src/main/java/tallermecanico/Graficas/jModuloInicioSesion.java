@@ -12,27 +12,39 @@ import java.util.logging.Logger;
 import javax.swing.JMenuItem;
 import tallermecanico.BaseDeDatos;
 //no lo necesito por ahora y por eso lo coamento --->> import javax.swing.table.DefaultTableModel;
+import tallermecanico.PaginaPrincipal;
+
 
 
 public class jModuloInicioSesion extends javax.swing.JInternalFrame {
 
      BaseDeDatos conexion = new BaseDeDatos();
+     PaginaPrincipal paginaPrincipal ;
      
-     
-     /*Empieza aqui la manera de activar y desactivar las opciones del menu principal desde esta clase*/
+    /*Empieza aqui la manera de activar y desactivar las opciones del menu principal desde esta clase*/
     private JMenuItem jMenuLogIn;
     private JMenuItem jMenuLogOut;
-    public void setJMenuLogIn(JMenuItem jMenuLogIn) { this.jMenuLogIn = jMenuLogIn; }
-    public void setJMenuLogOut(JMenuItem jMenuLogOut) { this.jMenuLogOut = jMenuLogOut;  }
-    /*//////////////////////////////// termina aqui //////////////////////////////////////////////////*/
-    
-    
-    
-    public jModuloInicioSesion() {
-        initComponents();
-        limpiarCampos();
-    }
+    private JMenuItem jMenuAdministrarUsuarios;
 
+    public void setJMenuLogIn(JMenuItem jMenuLogIn) {
+        this.jMenuLogIn = jMenuLogIn;
+    }
+    public void setJMenuLogOut(JMenuItem jMenuLogOut) {
+        this.jMenuLogOut = jMenuLogOut;
+    }
+     public void setJMenuAdministrarUsuarios(JMenuItem jMenuAdministrarUsuarios) {
+        this.jMenuAdministrarUsuarios = jMenuAdministrarUsuarios;
+    }
+    /*//////////////////////////////// termina aqui //////////////////////////////////////////////////*/
+
+     public jModuloInicioSesion(PaginaPrincipal paginaPrincipal) { // CONSTRUCTOR DE LA VENTANA
+    initComponents();
+    limpiarCampos();
+    this.paginaPrincipal = paginaPrincipal;
+    this.conexion = new BaseDeDatos();  // inicializamos la conexion con el objeto 
+}
+
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -137,7 +149,8 @@ public class jModuloInicioSesion extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Credenciales válidas. Acceso permitido.");
                 if (jMenuLogIn != null) {
                     jMenuLogIn.setEnabled(false);
-                    jMenuLogOut.setEnabled(true);                   
+                    jMenuLogOut.setEnabled(true);    
+                    jMenuAdministrarUsuarios.setEnabled(true);
                 }
                 dispose();
             } else {             
@@ -155,26 +168,37 @@ public class jModuloInicioSesion extends javax.swing.JInternalFrame {
 
  
     
-   public boolean validarCredenciales(String usuario, String contraseña) throws ClassNotFoundException {
-    String query = "SELECT * FROM proyecto.logininfo";
+    public boolean validarCredenciales(String usuario, String contraseña) throws ClassNotFoundException {
+        String query = "SELECT * FROM proyecto.logininfo";
 
-    try {
-        Statement statement = conexion.conexionUsuarioDB().createStatement();
-        ResultSet resultSet = statement.executeQuery(query);
+        try {
+            Statement statement = conexion.conexionUsuarioDB().createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
 
-        while (resultSet.next()) {
-            String user = resultSet.getString("username");
-            String password = resultSet.getString("password");
+            while (resultSet.next()) {
 
-         
-            if (user.equals(usuario) && password.equals(contraseña)) {
-                return true; 
+                int id = resultSet.getInt("id");
+                String nombre = resultSet.getString("nombre");
+                String apellido = resultSet.getString("apellido");
+                String user = resultSet.getString("username");
+                String password = resultSet.getString("password");
+                String tipo = resultSet.getString("tipo");
+
+                if (user.equals(usuario) && password.equals(contraseña)) {
+                    paginaPrincipal.setSesionActiva(true);
+                    paginaPrincipal.usuarioAutenticado.setId(id);
+                    paginaPrincipal.usuarioAutenticado.setNombre(nombre);
+                    paginaPrincipal.usuarioAutenticado.setApellido(apellido);
+                    paginaPrincipal.usuarioAutenticado.setUsername(user);
+                    paginaPrincipal.usuarioAutenticado.setTipo(tipo);
+
+                    paginaPrincipal.mostrarInfoUsuarioEnPanel();
+                    return true;
+                }
             }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
         }
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, e);
-    }
-
     return false; // Credenciales no encontradas o error en la base de datos
 }
 
