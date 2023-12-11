@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /TallerMecanico/target/
 
 
@@ -25,3 +26,12 @@ insert into LogInInfo (id, nombre, apellido, username, password, tipo) values (4
 select * from proyecto.logininfo;
 
 */
+=======
+/TallerMecanico/target/
+
+
+
+
+
+
+>>>>>>> 0fabf72cc01ee9489f9c98d15db6e474d3a87247
